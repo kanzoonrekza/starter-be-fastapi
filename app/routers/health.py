@@ -2,7 +2,6 @@
 
 from fastapi import APIRouter
 
-from app.config import settings
 from app.schemas import HealthResponse
 
 router = APIRouter(tags=["health"])
@@ -10,4 +9,4 @@ router = APIRouter(tags=["health"])
 
 @router.get("/health")
 def health() -> HealthResponse:
-    return HealthResponse(status="ok", app=settings.app_name)
+    return HealthResponse(status="ok")
