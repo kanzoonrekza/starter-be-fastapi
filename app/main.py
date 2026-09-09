@@ -1,13 +1,11 @@
+"""Assembly only: build the app, attach routers. No endpoints in this file."""
+
 from fastapi import FastAPI
 
-app = FastAPI()
+from app.config import settings
+from app.routers import health, root
 
+app = FastAPI(title=settings.app_name, debug=settings.debug)
 
-@app.get("/")
-def read_root():
-    return {"message": "Hello, World"}
-
-
-@app.get("/health")
-def health():
-    return {"status": "ok"}
+app.include_router(root.router)
+app.include_router(health.router)
