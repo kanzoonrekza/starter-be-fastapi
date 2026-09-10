@@ -12,4 +12,13 @@ dev:
 run:
 	uv run fastapi run app/main.py --port $(PORT)
 
-.PHONY: install dev run
+migration:
+	uv run alembic revision --autogenerate -m "$(m)"
+
+migrate:
+	uv run alembic upgrade head
+
+rollback:
+	uv run alembic downgrade -1
+
+.PHONY: install dev run migration migrate rollback

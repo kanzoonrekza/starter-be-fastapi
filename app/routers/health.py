@@ -1,5 +1,3 @@
-"""Copy this file to start a new router, then wire it in app/main.py."""
-
 from fastapi import APIRouter
 
 from app.schemas import HealthResponse
